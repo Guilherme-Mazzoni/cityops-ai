@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import uvicorn
 from api.services.ml_service import predict_sla_delay
@@ -8,6 +9,14 @@ app = FastAPI(
     title="CityOps AI API",
     description="API central do CityOps AI para predição de SLA (Machine Learning) e Chatbot de RAG (GenAI)",
     version="1.0.0"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 class SLAPredictionRequest(BaseModel):
