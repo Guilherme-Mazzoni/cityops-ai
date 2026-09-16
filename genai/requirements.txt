@@ -1,4 +1,5 @@
-openai>=1.0.0
+sentence-transformers
+groq
 sqlalchemy
 psycopg2-binary
 pandas
