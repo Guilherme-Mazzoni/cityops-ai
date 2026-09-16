@@ -4,7 +4,7 @@ import pandas as pd
 
 def compare_models():
     os.environ["MLFLOW_ALLOW_FILE_STORE"] = "true"
-    mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "file://" + os.path.join(os.path.dirname(__file__), "..", "..", "mlruns")))
+    mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "sqlite:///mlruns.db"))
     experiment = mlflow.get_experiment_by_name("CityOps_SLA_Prediction")
     
     if not experiment:

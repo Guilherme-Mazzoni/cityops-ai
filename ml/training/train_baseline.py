@@ -19,7 +19,7 @@ def train_baseline():
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     
     os.environ["MLFLOW_ALLOW_FILE_STORE"] = "true"
-    mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "file://" + os.path.join(os.path.dirname(__file__), "..", "..", "mlruns")))
+    mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "sqlite:///mlruns.db"))
     mlflow.set_experiment("CityOps_SLA_Prediction")
     
     with mlflow.start_run(run_name="Logistic_Regression_Baseline"):
