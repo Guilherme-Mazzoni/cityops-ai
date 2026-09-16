@@ -17,7 +17,11 @@ def setup_vector_db():
         print("Habilitando extensão pgvector...")
         conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector;"))
         
-        print("Criando tabela complaint_embeddings...")
+        print("Limpando tabela antiga (se existir)...")
+        conn.execute(text("DROP TABLE IF EXISTS complaint_embeddings;"))
+        
+        # Reduzimos a dimensão do VECTOR de 1536 (OpenAI) para 384 (sentence-transformers: all-MiniLM-L6-v2)
+        print("Criando tabela complaint_embeddings (VECTOR 384D)...")
         conn.execute(text("""
             CREATE TABLE IF NOT EXISTS complaint_embeddings (
                 id SERIAL PRIMARY KEY,
@@ -25,13 +29,11 @@ def setup_vector_db():
                 complaint_type VARCHAR(255),
                 descriptor TEXT,
                 resolution_description TEXT,
-                embedding VECTOR(1536)
+                embedding VECTOR(384)
             );
         """))
         
-        # Opcional: Criar um índice para acelerar as buscas vetoriais
-        # Estamos usando HNSW (Hierarchical Navigable Small World) que é muito eficiente
-        print("Criando índice HNSW para buscas rápidas (pode falhar silenciosamente se a tabela estiver vazia e a versão do pgvector for antiga)...")
+        print("Criando índice HNSW para buscas rápidas...")
         try:
             conn.execute(text("""
                 CREATE INDEX IF NOT EXISTS embedding_idx ON complaint_embeddings 
