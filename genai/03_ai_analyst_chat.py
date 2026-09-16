@@ -47,9 +47,9 @@ def search_similar_complaints(query_embedding, limit=5):
             complaint_type, 
             descriptor, 
             resolution_description,
-            1 - (embedding <=> :query_embedding::vector) as similarity_score
+            1 - (embedding <=> CAST(:query_embedding AS vector)) as similarity_score
         FROM complaint_embeddings
-        ORDER BY embedding <=> :query_embedding::vector
+        ORDER BY embedding <=> CAST(:query_embedding AS vector)
         LIMIT :limit
     """)
     
