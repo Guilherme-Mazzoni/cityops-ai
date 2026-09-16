@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: public
+    description: "Raw data loaded directly from the CSV"
+    database: cityops
+    schema: public
+    tables:
+      - name: raw_311_requests
+        description: "Raw NYC 311 service requests dataset"
+        columns:
+          - name: unique_key
+            description: "Primary Key"
+            tests:
+              - unique
+              - not_null
