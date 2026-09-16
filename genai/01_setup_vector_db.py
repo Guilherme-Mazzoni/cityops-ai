@@ -42,7 +42,7 @@ def setup_vector_db():
             
         conn.commit()
     
-    print("Setup do Banco de Dados Vetorial concluído com sucesso! 🚀")
+    print("Setup do Banco de Dados Vetorial concluído com sucesso!")
 
 if __name__ == "__main__":
     setup_vector_db()
