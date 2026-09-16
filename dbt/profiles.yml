@@ -1,0 +1,13 @@
+cityops_ai:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: "{{ env_var('POSTGRES_USER', 'user') }}"
+      password: "{{ env_var('POSTGRES_PASSWORD', 'password') }}"
+      port: 5433
+      dbname: cityops
+      schema: analytics
+      threads: 4
+      keepalives_idle: 0
