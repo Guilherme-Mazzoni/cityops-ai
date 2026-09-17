@@ -22,13 +22,11 @@ function App() {
     
     // Bento boxes stagger animation
     gsap.from(".bento-item", {
-      y: 50,
-      scale: 0.95,
       opacity: 0,
-      duration: 0.8,
-      stagger: 0.15,
-      ease: "power3.out",
-      delay: 0.2
+      duration: 0.4,
+      stagger: 0.05,
+      ease: "power2.out",
+      delay: 0.1
     })
   }, { scope: container })
 

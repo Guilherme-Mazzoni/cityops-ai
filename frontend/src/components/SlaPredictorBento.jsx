@@ -18,26 +18,29 @@ export default function SlaPredictorBento() {
         { innerHTML: 0 }, 
         { 
           innerHTML: result, 
-          duration: 2, 
+          duration: 1.2, 
           snap: { innerHTML: 1 }, 
-          ease: "power3.out",
+          ease: "power2.out",
           onUpdate: function() {
             textRef.current.innerHTML = Math.round(this.targets()[0].innerHTML) + '%';
           }
         }
       );
       
+      let severityColor = "#429e47"; // Green
+      if (result >= 40 && result < 75) severityColor = "#e5a329"; // Yellow/Orange
+      if (result >= 75) severityColor = "#d64e4e"; // Red
+      
       gsap.fromTo(gaugeRef.current,
         { "--gauge-value": "0%" },
-        { "--gauge-value": `${result}%`, duration: 2, ease: "power3.out" }
+        { "--gauge-value": `${result}%`, "--gauge-color": severityColor, duration: 1.2, ease: "power2.out" }
       );
       
       gsap.from(".prediction-result > *", {
-        y: 20,
         opacity: 0,
-        duration: 0.6,
+        duration: 0.4,
         stagger: 0.1,
-        ease: "power2.out"
+        ease: "power1.out"
       });
     }
   }, { dependencies: [result], scope: container });
