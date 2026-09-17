@@ -64,7 +64,7 @@ PERGUNTA: {user_question}
 """
         
         completion = groq_client.chat.completions.create(
-            model="mixtral-8x7b-32768",
+            model="qwen/qwen3.8-27b",
             messages=[
                 {"role": "system", "content": "Você é um analista de dados especialista em gestão pública."},
                 {"role": "user", "content": prompt}
