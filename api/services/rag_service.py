@@ -69,7 +69,8 @@ PERGUNTA: {user_question}
                 {"role": "system", "content": "Você é um analista de dados especialista em gestão pública."},
                 {"role": "user", "content": prompt}
             ],
-            temperature=0.3
+            temperature=0.3,
+            max_tokens=800
         )
         return completion.choices[0].message.content
         
