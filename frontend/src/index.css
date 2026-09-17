@@ -5,7 +5,7 @@
   --surface-base: #18181b;
   --surface-border: #27272a;
   --text-primary: #f8fafc;
-  --text-secondary: #a1a1aa;
+  --text-secondary: #d4d4d8;
   --accent-primary: #3b82f6;
   --accent-secondary: #0ea5e9;
   --accent-gradient: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
@@ -24,16 +24,17 @@ body {
   font-family: 'Inter', -apple-system, sans-serif;
   background-color: var(--bg-base);
   color: var(--text-primary);
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .dashboard-container {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -63,10 +64,10 @@ body {
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(2, minmax(0, 1fr));
+  grid-template-rows: min-content minmax(350px, 1fr);
   gap: 16px;
   flex: 1;
-  min-height: 0;
+  width: 100%;
 }
 
 .bento-item {

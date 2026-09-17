@@ -4,7 +4,7 @@ export default function ProjectDocumentationBento() {
   const [activeTab, setActiveTab] = useState('business');
 
   return (
-    <div className="bento-item col-span-8">
+    <div className="bento-item col-span-6">
       <h2 className="widget-title">CityOps AI: Architecture & Business Value</h2>
       
       <div className="tabs-header">

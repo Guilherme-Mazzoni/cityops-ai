@@ -73,10 +73,14 @@ export default function SlaPredictorBento() {
   };
 
   return (
-    <div className="bento-item col-span-4" ref={container} style={{ display: 'flex', flexDirection: 'column', overflowY: 'auto' }}>
-      <h2 className="widget-title">Preditor de SLA</h2>
+    <div className="bento-item col-span-6" ref={container} style={{ display: 'flex', flexDirection: 'column', overflowY: 'auto' }}>
+      <h2 className="widget-title">Preditor de SLA (Triagem)</h2>
       
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: result !== null ? '24px' : 'auto' }}>
+      <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '16px', lineHeight: 1.5 }}>
+        Preveja a probabilidade matemática de atraso de um chamado antes do despacho da equipe. Esta IA analisa o padrão histórico do <strong>NYC 311</strong> para mitigar multas.
+      </p>
+
+      <form onSubmit={handleSubmit} style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: result !== null ? '24px' : 'auto' }}>
         <div className="form-group" style={{ marginBottom: 0 }}>
           <label className="form-label">Distrito</label>
           <select className="form-select" value={formData.borough} onChange={e => setFormData({...formData, borough: e.target.value})}>
