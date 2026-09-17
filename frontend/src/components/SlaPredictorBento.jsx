@@ -42,12 +42,14 @@ export default function SlaPredictorBento() {
     }
   }, { dependencies: [result], scope: container });
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setErrorMsg(null);
     try {
-      const res = await fetch('http://localhost:8000/predict-sla', {
+      const res = await fetch(`${API_URL}/predict-sla`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -68,55 +70,52 @@ export default function SlaPredictorBento() {
   };
 
   return (
-    <div className="bento-item col-span-4" ref={container}>
+    <div className="bento-item col-span-4" ref={container} style={{ display: 'flex', flexDirection: 'column', overflowY: 'auto' }}>
       <h2 className="widget-title">Preditor de SLA</h2>
       
-      {result !== null ? (
-        <div className="prediction-result">
-          <div className="gauge-container" ref={gaugeRef} style={{ '--gauge-value': `${result}%` }}>
-            <div className="gauge-inner" ref={textRef}>{result}%</div>
-          </div>
-          <p style={{ color: 'var(--text-secondary)' }}>Probabilidade de Atraso</p>
-          <button className="btn-primary" style={{ marginTop: '32px' }} onClick={() => setResult(null)}>
-            Nova Análise
-          </button>
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: result !== null ? '24px' : 'auto' }}>
+        <div className="form-group" style={{ marginBottom: 0 }}>
+          <label className="form-label">Distrito</label>
+          <select className="form-select" value={formData.borough} onChange={e => setFormData({...formData, borough: e.target.value})}>
+            <option value="BROOKLYN">Brooklyn</option>
+            <option value="QUEENS">Queens</option>
+            <option value="MANHATTAN">Manhattan</option>
+            <option value="BRONX">Bronx</option>
+            <option value="STATEN ISLAND">Staten Island</option>
+          </select>
         </div>
-      ) : (
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
-          <div className="form-group">
-            <label className="form-label">Distrito</label>
-            <select className="form-select" value={formData.borough} onChange={e => setFormData({...formData, borough: e.target.value})}>
-              <option value="BROOKLYN">Brooklyn</option>
-              <option value="QUEENS">Queens</option>
-              <option value="MANHATTAN">Manhattan</option>
-              <option value="BRONX">Bronx</option>
-              <option value="STATEN ISLAND">Staten Island</option>
-            </select>
+        <div className="form-group" style={{ marginBottom: 0 }}>
+          <label className="form-label">Agência Responsável</label>
+          <select className="form-select" value={formData.agency} onChange={e => setFormData({...formData, agency: e.target.value})}>
+            <option value="NYPD">NYPD</option>
+            <option value="DSNY">DSNY</option>
+            <option value="DEP">DEP</option>
+            <option value="DOT">DOT</option>
+          </select>
+        </div>
+        <div className="form-group" style={{ marginBottom: 0 }}>
+          <label className="form-label">Tipo de Reclamação</label>
+          <input className="form-input" type="text" placeholder="Ex: Noise..." value={formData.complaint_type} onChange={e => setFormData({...formData, complaint_type: e.target.value})} />
+        </div>
+        
+        {errorMsg && (
+          <div style={{ color: '#DC2626', fontSize: '0.85rem', padding: '8px', background: '#FEE2E2', borderRadius: '4px' }}>
+            {errorMsg}
           </div>
-          <div className="form-group">
-            <label className="form-label">Agência Responsável</label>
-            <select className="form-select" value={formData.agency} onChange={e => setFormData({...formData, agency: e.target.value})}>
-              <option value="NYPD">NYPD</option>
-              <option value="DSNY">DSNY</option>
-              <option value="DEP">DEP</option>
-              <option value="DOT">DOT</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label className="form-label">Tipo de Reclamação</label>
-            <input className="form-input" type="text" placeholder="Ex: Noise, Rodents..." value={formData.complaint_type} onChange={e => setFormData({...formData, complaint_type: e.target.value})} />
-          </div>
-          
-          {errorMsg && (
-            <div style={{ color: '#DC2626', fontSize: '0.85rem', marginBottom: '16px', padding: '8px', background: '#FEE2E2', borderRadius: '4px' }}>
-              {errorMsg}
-            </div>
-          )}
+        )}
 
-          <button type="submit" className="btn-primary" disabled={loading} style={{ marginTop: 'auto' }}>
-            {loading ? 'Processando...' : 'Calcular Previsão'}
-          </button>
-        </form>
+        <button type="submit" className="btn-primary" disabled={loading} style={{ marginTop: '8px' }}>
+          {loading ? 'Processando...' : 'Calcular Previsão'}
+        </button>
+      </form>
+
+      {result !== null && (
+        <div className="prediction-result" style={{ marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid var(--surface-border)' }}>
+          <div className="gauge-container" ref={gaugeRef} style={{ '--gauge-value': `${result}%`, margin: '0 auto 8px auto', width: '100px', height: '100px' }}>
+            <div className="gauge-inner" ref={textRef} style={{ width: '84px', height: '84px', fontSize: '1.2rem' }}>{result}%</div>
+          </div>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', margin: 0 }}>Probabilidade de Atraso</p>
+        </div>
       )}
     </div>
   );

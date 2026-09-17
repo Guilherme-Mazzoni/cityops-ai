@@ -7,6 +7,8 @@ export default function AiAnalystBento() {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
   const handleSend = async (e) => {
     e.preventDefault();
     if (!input.trim()) return;
@@ -17,7 +19,7 @@ export default function AiAnalystBento() {
     setLoading(true);
 
     try {
-      const res = await fetch('http://localhost:8000/ask-analyst', {
+      const res = await fetch(`${API_URL}/ask-analyst`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ question: userQuery })
