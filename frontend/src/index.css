@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
 
 :root {
-  --bg-base: #09090b;
-  --surface-base: #18181b;
-  --surface-border: #27272a;
+  --bg-base: #020617;
+  --surface-base: #0f172a;
+  --surface-border: #1e293b;
   --text-primary: #f8fafc;
-  --text-secondary: #d4d4d8;
+  --text-secondary: #94a3b8;
   --accent-primary: #3b82f6;
   --accent-secondary: #0ea5e9;
   --accent-gradient: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
@@ -83,7 +83,7 @@ body {
 }
 
 .bento-item:hover {
-  border-color: #3f3f46;
+  border-color: #334155;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 16px rgba(59, 130, 246, 0.05);
 }
 

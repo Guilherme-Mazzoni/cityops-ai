@@ -8,10 +8,10 @@ export default function ProjectDocumentationBento() {
       <h2 className="widget-title">CityOps AI: Architecture & Business Value</h2>
       
       <div className="tabs-header">
-        <button className={`tab-btn ${activeTab === 'business' ? 'active' : ''}`} onClick={() => setActiveTab('business')}>🏢 Visão de Negócios</button>
-        <button className={`tab-btn ${activeTab === 'architecture' ? 'active' : ''}`} onClick={() => setActiveTab('architecture')}>⚙️ Eng. de Dados</button>
-        <button className={`tab-btn ${activeTab === 'ml' ? 'active' : ''}`} onClick={() => setActiveTab('ml')}>🧠 Machine Learning</button>
-        <button className={`tab-btn ${activeTab === 'rag' ? 'active' : ''}`} onClick={() => setActiveTab('rag')}>🤖 GenAI & RAG</button>
+        <button className={`tab-btn ${activeTab === 'business' ? 'active' : ''}`} onClick={() => setActiveTab('business')}>Visão de Negócios</button>
+        <button className={`tab-btn ${activeTab === 'architecture' ? 'active' : ''}`} onClick={() => setActiveTab('architecture')}>Eng. de Dados</button>
+        <button className={`tab-btn ${activeTab === 'ml' ? 'active' : ''}`} onClick={() => setActiveTab('ml')}>Machine Learning</button>
+        <button className={`tab-btn ${activeTab === 'rag' ? 'active' : ''}`} onClick={() => setActiveTab('rag')}>GenAI & RAG</button>
       </div>
 
       <div style={{ flex: 1, minHeight: 0, overflowY: 'auto', paddingRight: '8px' }}>
