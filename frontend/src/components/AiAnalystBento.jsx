@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export default function AiAnalystBento() {
   const [messages, setMessages] = useState([
-    { role: 'system', content: 'System Initialized. RAG Vector Database connected. Awaiting query...' }
+    { role: 'system', content: 'Sistema Inicializado. Banco de Dados Vetorial conectado. Aguardando instrução.' }
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -23,16 +23,16 @@ export default function AiAnalystBento() {
         body: JSON.stringify({ question: userQuery })
       });
       const data = await res.json();
-      setMessages(prev => [...prev, { role: 'system', content: data.answer || 'Error: No response generated.' }]);
+      setMessages(prev => [...prev, { role: 'system', content: data.answer || 'Erro: Nenhuma resposta gerada.' }]);
     } catch (error) {
-      setMessages(prev => [...prev, { role: 'system', content: 'Connection Error: Failed to reach backend API.' }]);
+      setMessages(prev => [...prev, { role: 'system', content: 'Erro de Conexão: Falha ao comunicar com a API backend.' }]);
     }
     setLoading(false);
   };
 
   return (
     <div className="bento-item col-span-8 row-span-2">
-      <h2 className="widget-title">Intelligence Terminal (RAG)</h2>
+      <h2 className="widget-title">Analista de Dados IA</h2>
       
       <div className="chat-container">
         <div className="chat-history">
@@ -43,7 +43,7 @@ export default function AiAnalystBento() {
           ))}
           {loading && (
             <div className="chat-message message-system">
-              Processing Context Vectors...
+              Buscando contexto e cruzando dados históricos...
             </div>
           )}
         </div>
@@ -52,13 +52,13 @@ export default function AiAnalystBento() {
           <input 
             type="text" 
             className="form-input" 
-            placeholder="Input query for RAG analysis..." 
+            placeholder="Ex: Quais os problemas mais comuns no Brooklyn?" 
             value={input}
             onChange={(e) => setInput(e.target.value)}
             disabled={loading}
           />
           <button type="submit" className="btn-primary" disabled={loading || !input.trim()}>
-            Send Query
+            Analisar
           </button>
         </form>
       </div>
