@@ -20,10 +20,7 @@ export default function ProjectDocumentationBento() {
           <div className="tab-content-pane">
             <h3>O Impacto Financeiro dos SLAs</h3>
             <p>
-              Metrópoles como Nova York processam milhões de chamados pelo canal 311 (Lixo, Ruído, Buracos). Quando uma agência falha em cumprir o prazo acordado (SLA), a prefeitura sofre com multas, desperdício de recursos e insatisfação pública. 
-            </p>
-            <p>
-              <strong>Nossa Solução:</strong> Ao invés de agir de forma reativa, o <em>CityOps AI</em> aplica Machine Learning para atuar na <strong>Triagem Preditiva</strong>. Ao saber matematicamente quais chamados têm mais de 70% de chance de atrasar antes mesmo de despachar a equipe, gestores podem priorizar rotas e alocar recursos preventivamente, economizando milhões em processos ineficientes.
+              O <em>CityOps AI</em> aplica Machine Learning para atuar na <strong>Triagem Preditiva</strong>. Ao invés de reagir aos atrasos, a prefeitura sabe matematicamente quais chamados têm chance de atrasar antes mesmo de despachar a equipe, economizando recursos e evitando multas.
             </p>
           </div>
         )}

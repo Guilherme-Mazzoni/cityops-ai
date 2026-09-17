@@ -77,7 +77,7 @@ export default function SlaPredictorBento() {
       <h2 className="widget-title">Preditor de SLA (Triagem)</h2>
       
       <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '16px', lineHeight: 1.5 }}>
-        Preveja a probabilidade matemática de atraso de um chamado antes do despacho da equipe. Esta IA analisa o padrão histórico do <strong>NYC 311</strong> para mitigar multas.
+        Preveja a chance de atraso de um chamado (NYC 311) antes do despacho da equipe.
       </p>
 
       <form onSubmit={handleSubmit} style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: result !== null ? '24px' : 'auto' }}>
