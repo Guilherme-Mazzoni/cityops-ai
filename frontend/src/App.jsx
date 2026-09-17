@@ -1,3 +1,4 @@
+import AboutBento from './components/AboutBento'
 import SlaPredictorBento from './components/SlaPredictorBento'
 import AiAnalystBento from './components/AiAnalystBento'
 import ExplainabilityBento from './components/ExplainabilityBento'
@@ -11,6 +12,7 @@ function App() {
       </header>
       
       <main className="bento-grid">
+        <AboutBento />
         <SlaPredictorBento />
         <AiAnalystBento />
         <ExplainabilityBento />
