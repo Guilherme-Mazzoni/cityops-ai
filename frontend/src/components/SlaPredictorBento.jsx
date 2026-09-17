@@ -25,7 +25,7 @@ export default function SlaPredictorBento() {
 
   return (
     <div className="bento-item col-span-4">
-      <h2 className="widget-title">Previsão de Atraso (SLA)</h2>
+      <h2 className="widget-title">Preditor de SLA</h2>
       
       {result !== null ? (
         <div className="prediction-result">

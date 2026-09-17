@@ -31,8 +31,8 @@ export default function AiAnalystBento() {
   };
 
   return (
-    <div className="bento-item col-span-8 row-span-2">
-      <h2 className="widget-title">Analista de Dados IA</h2>
+    <div className="bento-item col-span-7">
+      <h2 className="widget-title">Analista IA (Qwen 2.5 + RAG)</h2>
       
       <div className="chat-container">
         <div className="chat-history">

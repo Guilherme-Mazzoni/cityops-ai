@@ -8,7 +8,7 @@ function App() {
     <div className="dashboard-container">
       <header className="dashboard-header">
         <h1>CityOps AI</h1>
-        <p>Plataforma de Analytics e Gestão Pública</p>
+        <p>Command Center & Analytics</p>
       </header>
       
       <main className="bento-grid">
