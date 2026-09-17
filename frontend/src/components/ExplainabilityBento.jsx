@@ -5,11 +5,11 @@ export default function ExplainabilityBento() {
       <p style={{ color: 'var(--text-secondary)', marginBottom: '16px', fontSize: '0.9rem' }}>
         Importância global das variáveis no modelo preditivo (XGBoost). Analisa como o Distrito, a Agência e o Tipo de Reclamação impactam o atraso matematicamente.
       </p>
-      <div style={{ flex: 1, width: '100%', minHeight: 0, display: 'flex', justifyContent: 'center', background: '#F9FAFB', border: '1px solid #E5E7EB', borderRadius: 'var(--radius-md)', padding: '16px', overflow: 'hidden' }}>
+      <div style={{ flex: 1, width: '100%', minHeight: 0, display: 'flex', justifyContent: 'center', background: '#e2e8f0', border: '1px solid var(--surface-border)', borderRadius: 'var(--radius-md)', padding: '16px', overflow: 'hidden' }}>
         <img 
           src="/shap_summary.png" 
           alt="Gráfico de Valores SHAP" 
-          style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: '8px' }} 
+          style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: '8px', mixBlendMode: 'multiply' }} 
         />
       </div>
     </div>

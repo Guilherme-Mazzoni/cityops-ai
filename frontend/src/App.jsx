@@ -23,6 +23,7 @@ function App() {
     // Bento boxes stagger animation
     gsap.from(".bento-item", {
       y: 50,
+      scale: 0.95,
       opacity: 0,
       duration: 0.8,
       stagger: 0.15,
