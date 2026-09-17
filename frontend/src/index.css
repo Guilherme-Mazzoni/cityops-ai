@@ -229,6 +229,7 @@ body {
   line-height: 1.5;
   font-size: 0.95rem;
   max-width: 85%;
+  white-space: pre-wrap;
 }
 
 .message-user {
